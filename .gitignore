@@ -1,0 +1,17 @@
+# Python virtual environment
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Google API Credentials & Tokens (Secrets!)
+credentials.json
+token.json
+
+# Local Python version config
+.python-version
