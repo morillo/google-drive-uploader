@@ -4,7 +4,7 @@ A Python CLI tool to upload files to Google Drive using the Drive API v3. Featur
 
 ## Prerequisites
 
-- Python 3.11 (managed via `pyenv`)
+- [uv](https://docs.astral.sh/uv/) (installs the pinned Python 3.11 automatically)
 - A Google Cloud Project
 - Google Drive API enabled
 
@@ -33,32 +33,22 @@ To interact with Google Drive, you need to configure access in the Google Cloud 
    - Click the **Download JSON** icon for the created client ID.
    - Save this file as `credentials.json` in the same directory as the script.
 
-### 2. Configure Pyenv & Virtual Environment
+### 2. Set up the environment
 
-Configure your local directory to use Python 3.11, create a virtual environment, and install the required Google client libraries:
+Setup: `uv sync` — uv creates `.venv` with the pinned Python (see `.python-version`) and installs the dependencies from `uv.lock`.
 
 ```bash
-# 1. Set local directory to Python 3.11 using pyenv
-pyenv local 3.11.9
-
-# 2. Create the virtual environment
-python -m venv .venv
-
-# 3. Activate the virtual environment
-source .venv/bin/activate
-
-# 4. Install dependencies
-pip install -r requirements.txt
+uv sync
 ```
 
 ---
 
 ## Usage
 
-Ensure your virtual environment is active, then run the script by passing the path to the local file you want to upload:
+Run the script with `uv run` (no activation needed) by passing the path to the local file you want to upload:
 
 ```bash
-python upload.py <path-to-local-file>
+uv run upload.py <path-to-local-file>
 ```
 
 
@@ -77,22 +67,22 @@ python upload.py <path-to-local-file>
 
 **Basic Upload:**
 ```bash
-python3 upload.py photo.jpg
+uv run upload.py photo.jpg
 ```
 
 **Upload to a Specific Folder:**
 ```bash
-python3 upload.py photo.jpg --folder-id "1abc123xyz_folder_id"
+uv run upload.py photo.jpg --folder-id "1abc123xyz_folder_id"
 ```
 
 **Upload and Convert a CSV to Google Sheets:**
 ```bash
-python3 upload.py data.csv --convert
+uv run upload.py data.csv --convert
 ```
 
 **Upload with Custom Name and Description:**
 ```bash
-python3 upload.py doc.docx --name "Q3 Report" --description "Draft Q3 Financial Report"
+uv run upload.py doc.docx --name "Q3 Report" --description "Draft Q3 Financial Report"
 ```
 
 ---
