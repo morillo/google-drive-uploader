@@ -13,5 +13,6 @@ __pycache__/
 credentials.json
 token.json
 
-# Local Python version config
-.python-version
+
+# Editor
+.vscode/
